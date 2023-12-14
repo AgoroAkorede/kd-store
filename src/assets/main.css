@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::after,
+*::before {
+  /* padding: 0;
+  margin: 0; */
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background: #000000d4;
+  /* background: -moz-linear-gradient(90deg, rgba(15, 23, 42, 1) 0%, rgba(37, 48, 64, 1) 57%);
+  background: -webkit-linear-gradient(90deg, rgba(15, 23, 42, 1) 0%, rgba(37, 48, 64, 1) 57%);
+  background: linear-gradient(90deg, rgba(15, 23, 42, 1) 0%, rgba(37, 48, 64, 1) 57%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0f172a",endColorstr="#253040",GradientType=1); */
+}
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+button {
+  flex-direction: row;
+  border-radius: 0.5rem;
+  background-color: #545454;
+  /* color: #3e3e3e; */
+}
