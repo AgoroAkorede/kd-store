@@ -1,8 +1,10 @@
 <script lang="ts">
 import StoreIconVue from '../icons/StoreIcon.vue'
-import { searchItems } from '../../stores'
+import { searchItems, userItems } from '../../stores'
 import { mapActions, mapState } from 'pinia'
 import SearchIconVue from '../icons/SearchIcon.vue'
+import IconWrapper from '../icons/IconWrapper.vue'
+import UserIcon from '../icons/UserIcon.vue'
 export default {
   name: 'HeaderLayout',
   data() {
@@ -11,10 +13,14 @@ export default {
       searchModal: false
     }
   },
+  // mounted() {
+  //   this.createUser()
+  // },
   components: {
     // 'icon-wrapper': IconWrapperVue,
     'store-icon': StoreIconVue,
-    'search-icon': SearchIconVue
+    'search-icon': SearchIconVue,
+    'user-icon': UserIcon
   },
   methods: {
     searchStore() {
@@ -29,10 +35,12 @@ export default {
     remove(_: any) {
       this.removeSearch(_)
     },
-    ...mapActions(searchItems, ['addTosearches', 'setSearchValue', 'removeSearch'])
+    ...mapActions(searchItems, ['addTosearches', 'setSearchValue', 'removeSearch']),
+    ...mapActions(userItems, ['createUser', 'signOutFromStore'])
   },
   computed: {
-    ...mapState(searchItems, ['searchArray'])
+    ...mapState(searchItems, ['searchArray']),
+    ...mapState(userItems, ['name', 'photoId', 'email', 'user'])
   }
 }
 </script>
@@ -57,7 +65,23 @@ export default {
           @click="showModal"
         />
       </form>
-      <div>user</div>
+      <div class="flex flex-col items-center justify-center h-[100%]">
+        <div class="justify-center">
+          <user-icon />
+        </div>
+        <span class="flex justify-center" v-if="name">{{ user.displayName }}</span>
+      </div>
+      <div class="bg-[#c2c2c2] absolute right-4 top-16 w-[18rem] rounded-2xl p-4">
+        <p>{{ user.displayName }}</p>
+        <p>{{ user.email }}</p>
+        <button
+          class="bg-transparent text-sm text-[#FA2194] capitalize"
+          v-if="Object.keys(user).length > 0"
+        >
+          sign out
+        </button>
+        <router-link v-else to="/signin">signin</router-link>
+      </div>
     </div>
 
     <div

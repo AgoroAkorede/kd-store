@@ -4,7 +4,6 @@ import SideTabComponentVue from '../components/SideTabComponent.vue'
 
 export default {
   components: {
-    'side-tab-component': SideTabComponentVue,
     'page-layout': PageLayoutVue
   },
 

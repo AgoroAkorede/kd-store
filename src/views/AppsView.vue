@@ -1,17 +1,17 @@
 <script>
 import PageLayoutVue from '../components/Layout/PageLayout.vue'
-import SideTabComponentVue from '../components/SideTabComponent.vue'
 
 export default {
   components: {
-    'page-layout': PageLayoutVue
+    // 'page-layout': PageLayoutVue
   },
 
   name: 'AppsView'
 }
 </script>
 <template>
-  <page-layout>Apps </page-layout>
+  <!-- <page-layout>Apps </page-layout> -->
+  <div></div>
 </template>
 
 <style></style>

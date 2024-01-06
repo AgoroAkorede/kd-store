@@ -6,6 +6,7 @@ import MoviesView from '../views/MoviesView.vue'
 import StoreDetails from '../views/StoreDetails.vue'
 import SearchView from '../views/SearchView.vue'
 import SignUp from '../views/Sigunup.vue'
+import SignInVue from '@/views/SignIn.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -42,6 +43,11 @@ const router = createRouter({
       path: '/signup',
       name: 'SignUp',
       component: SignUp
+    },
+    {
+      path: '/signin',
+      name: 'SignIn',
+      component: SignInVue
     },
     {
       path: '/search/:name',

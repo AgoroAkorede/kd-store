@@ -1,5 +1,7 @@
 import router from '@/router'
 import { defineStore } from 'pinia'
+import { auth } from '../firebase'
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 interface SearchItem {
   name: string
@@ -58,6 +60,56 @@ export const storeItems = defineStore('store', {
   actions: {
     addToStoreItems(item: completeItem) {
       this.storeObj = item
+    }
+  }
+})
+
+export const userItems = defineStore('user', {
+  state: () => ({
+    user: {},
+    name: '',
+    email: '',
+    password: '',
+    photoId: null
+  }),
+  actions: {
+    createUser() {
+      const user = auth.currentUser
+
+      if (user !== null) {
+        this.name = user.displayName
+        this.email = user.email
+        this.photoId = user.photoURL
+      }
+    },
+    signInWithPassword(payload: {
+      $router: string[]
+      error: any
+      email: string
+      password: string
+    }) {
+      // const { email, password } = userDetails
+      signInWithEmailAndPassword(auth, payload.email, payload.password)
+        .then((userCredential) => {
+          this.user = userCredential.user
+          console.log(this.user)
+
+          payload.$router.push('/')
+        })
+        .catch((error) => {
+          payload.error = error.message
+          // ..
+        })
+    },
+    signOutFromStore() {
+      signOut(auth)
+        .then(() => {
+          router.push('/')
+          alert('User Signed out')
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
   }
 })
