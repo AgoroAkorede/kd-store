@@ -1,6 +1,6 @@
 <template>
   <!-- <div v-if="loading"></div> -->
-  <div class="h-[75%] relative overflow-hidden">
+  <div class="h-[75%] relative overflow-hidden mt-[5rem]">
     <div class="overflow-x-hidden m-5 flex space-x-1 flex-row">
       <div
         v-for="(item, index) in items"

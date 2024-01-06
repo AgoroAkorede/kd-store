@@ -15,8 +15,7 @@ export default {
   name: 'ButtonWrapper',
   props: {
     buttonProps: {
-      type: Object as PropType<ButtonProps>,
-      required: true
+      type: Object as PropType<ButtonProps>
     },
     text: {
       type: String,

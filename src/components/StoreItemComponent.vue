@@ -5,10 +5,10 @@
     >
       {{ storeItem.namedItem }}
     </div>
-    <div class="grid grid-cols-3 grid-rows-3 gap-3 p-3">
+    <div class="grid md:grid-cols-3 grid-rows-3 gap-3 p-3 grid-cols-1">
       <div
         v-for="item in storeItem.items"
-        class="flex flex-row bg-[#00000059] transition-transform w-[29.5vw] h-32 p-5 rounded cursor-pointer text-sm relative hover:translate-y-[-1px] hover:shadow-card"
+        class="flex flex-row bg-[#00000059] transition-transform md:w-[29.5vw] h-32 p-5 rounded cursor-pointer text-sm relative hover:translate-y-[-1px] hover:shadow-card w-[85vw] md:mx-4"
       >
         <img :src="item.image" class="rounded" :alt="item.id.toString" />
         <div class="flex flex-col mx-4">

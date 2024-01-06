@@ -38,6 +38,29 @@ select {
   font: inherit;
 }
 
+/* Style for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar:hover {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* color of the track (the area behind the thumb) */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c2c2c2; /* color of the thumb (the draggable part) */
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* scrollbar width */
+* {
+  scrollbar-width: 1px;
+}
+
 @media (prefers-color-scheme: dark) {
 }
 
@@ -45,5 +68,5 @@ button {
   flex-direction: row;
   border-radius: 0.5rem;
   background-color: #545454;
-  /* color: #3e3e3e; */
+  /* color: #00000054; */
 }

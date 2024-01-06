@@ -9,7 +9,11 @@ module.exports = {
         'black-gradient': 'gradient-to-r from-stone-500 to-stone-700',
         'store-white': '#fff',
         'store-grey': '#c2c2c2',
-        'store-blue': 'blue-500'
+        'store-blue': 'blue-500',
+        'store-secondary': '#545454'
+      },
+      screens: {
+        xs: '460px'
       },
       keyframes: {
         reduceWidth: {
@@ -19,6 +23,7 @@ module.exports = {
         },
         scaleAnimation: {
           '0%': { transform: 'scale(0)', top: '0%' },
+          '50%': { transform: 'scale(0)', top: '0%' },
           ' 100%': { transform: 'scale(1)', top: '0%' }
         },
         deScaleAnimation: {

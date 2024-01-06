@@ -1,8 +1,8 @@
 <script lang="ts">
-import IconWrapperVue from '../icons/IconWrapper.vue'
 import StoreIconVue from '../icons/StoreIcon.vue'
 import { searchItems } from '../../stores'
 import { mapActions, mapState } from 'pinia'
+import SearchIconVue from '../icons/SearchIcon.vue'
 export default {
   name: 'HeaderLayout',
   data() {
@@ -13,12 +13,15 @@ export default {
   },
   components: {
     // 'icon-wrapper': IconWrapperVue,
-    'store-icon': StoreIconVue
+    'store-icon': StoreIconVue,
+    'search-icon': SearchIconVue
   },
   methods: {
     searchStore() {
       this.addTosearches(this.query)
       this.searchModal = true
+      this.setSearchValue(this.query)
+      this.$router.push({ name: 'SearchDetails', params: { name: this.query } })
     },
     showModal() {
       this.searchModal = !this.searchModal
@@ -26,7 +29,7 @@ export default {
     remove(_: any) {
       this.removeSearch(_)
     },
-    ...mapActions(searchItems, ['addTosearches', 'setSearch', 'removeSearch'])
+    ...mapActions(searchItems, ['addTosearches', 'setSearchValue', 'removeSearch'])
   },
   computed: {
     ...mapState(searchItems, ['searchArray'])
@@ -35,15 +38,19 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col relative" @click="this.searchModal === false">
-    <div class="h-[10vh] w-[100%] flex justify-around items-center bg-[#545454]">
+  <div class="flex flex-col w-[100%] fixed z-50" @click="this.searchModal === false">
+    <div class="h-[10vh] w-[100%] p-2 flex justify-around items-center bg-store-secondary">
       <div class="h-[100%] flex w-auto flex-nowrap items-center">
         <store-icon />
       </div>
       <p class="uppercase">KD Store</p>
-      <form @submit.prevent="searchStore">
+      <form @submit.prevent="searchStore" class="relative">
+        <div class="lg:h-4 w-4 absolute sm:right-1 h-0 cursor-pointer lg:right-4 top-3 ml-2">
+          <search-icon />
+        </div>
+
         <input
-          class="bg-[#00000059] w-[40vw] border-store-grey border-[1px] rounded-md p-2 focus:outline-none focus:border-[#FA2194] truncate"
+          class="bg-[#00000059] w-[50vw] border-store-grey focus:border-b-[2px] rounded-md p-2 focus:outline-none focus:border-[#FA2194] focus:rounded-t-md truncate"
           type="text"
           placeholder="Search apps, games, movies and more"
           v-model="this.query"
@@ -55,15 +62,15 @@ export default {
 
     <div
       v-show="searchModal"
-      class="absolute left-[37.5%] top-[10vh] z-20 h-auto rounded-b-2xl shadow-card overflow-hidden"
+      class="absolute left-[32.5%] top-[10vh] z-20 h-auto rounded-b-2xl shadow-card overflow-hidden"
     >
       <div
         v-for="item in searchArray"
         :key="item.id"
-        class="w-[45vw] bg-[#000000d4] flex flex-col cursor-pointer"
+        class="w-[52.5vw] bg-[#000000d4] flex flex-col cursor-pointer"
       >
         <div class="flex flex-row h-10 hover:bg-[#4b4b4bd4] justify-between p-3 items-center">
-          <div @click="setSearch(item)" class="flex flex-row items-center w-[90%]">
+          <div @click="setSearchValue(item)" class="flex flex-row items-center w-[90%]">
             <div class="h-4 w-4 mx-4">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#c2c2c2">
                 <path

@@ -3,6 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import AppsView from '../views/AppsView.vue'
 import GamingView from '../views/GamingView.vue'
 import MoviesView from '../views/MoviesView.vue'
+import StoreDetails from '../views/StoreDetails.vue'
+import SearchView from '../views/SearchView.vue'
+import SignUp from '../views/Sigunup.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -29,6 +32,21 @@ const router = createRouter({
       path: '/Movies',
       name: 'Movies',
       component: MoviesView
+    },
+    {
+      path: '/:name',
+      name: 'StoreDetails',
+      component: StoreDetails
+    },
+    {
+      path: '/signup',
+      name: 'SignUp',
+      component: SignUp
+    },
+    {
+      path: '/search/:name',
+      name: 'SearchDetails',
+      component: SearchView
     }
   ]
 })

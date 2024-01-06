@@ -1,11 +1,13 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col px-8">
     <div
       class="text-xl font-semibold w-auto max-w-[15rem] h-10 transition-transform cursor-pointer p-2 m-4 rounded hover:bg-[#4b4b4b44] hover:text-[#FA2194] hover:translate-x-3 flex justify-left items-center"
     >
       {{ cardProps.namedItem }}
     </div>
-    <div class="grid grid-cols-6 gap-4 mx-3 w-[97.5%] mb-5">
+    <div
+      class="grid lg:grid-cols-6 gap-4 lg:mx-3 lg:w-[97.5%] mb-5 grid-cols-2 sm:grid-cols-3 w-[80%] mx-10 h-[15rem] overflow-hidden"
+    >
       <div
         v-for="card in cardProps.items"
         :key="cardProps.items"

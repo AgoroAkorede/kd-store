@@ -8,6 +8,9 @@ import StoreItemComponent from '../components/StoreItemComponent.vue'
 import CardItemComponentVue from '../components/CardItemComponent.vue'
 import { MAIN_STORE, musicItemsData } from '../data'
 import DetailedCardComponentVue from '../components/DetailedCardComponent.vue'
+import StoreItemLayoutVue from '../components/Layout/StoreItemLayout.vue'
+import { mapState } from 'pinia'
+import { storeItems } from '../stores'
 
 export default {
   components: {
@@ -15,6 +18,7 @@ export default {
     'page-layout': PageLayoutVue,
     'carousel-component': CarouselComponentVue,
     'store-item-component': StoreItemComponent,
+    'store-item-layout': StoreItemLayoutVue,
     'card-item-component': CardItemComponentVue,
     'detailed-card-component': DetailedCardComponentVue
   },
@@ -82,21 +86,25 @@ export default {
 
       bestSellingGame: bestSellingGame,
       topFreeGame: topFreeGame,
-      movies: movies
+      movies: movies,
+      obj: this.storeObj
     }
+  },
+  computed: {
+    ...mapState(storeItems, ['storeObj'])
   }
 }
 </script>
 
 <template>
-  <page-layout class="relative flex flex-col"
-    ><carousel-component :items="items" />
+  <page-layout class="relative flex flex-col">
+    <carousel-component :items="items" />
     <div class="absolute left-48 top-48 text-2xl font-bold">Home</div>
     <store-item-component />
     <card-item-component :card-props="musicStreamingItems" />
-    <detailed-card-component :card-props="bestSellingGame" :height="17.5" :has-ads="true" />
-    <detailed-card-component :card-props="topFreeGame" :height="23" :hasAds="false" />
-    <detailed-card-component :card-props="movies" :height="20" :hasAds="false" class="mb-12" />
+    <detailed-card-component :has-ads="true" :card-props="bestSellingGame" :height="16" />
+    <detailed-card-component :has-ads="false" :card-props="topFreeGame" :height="21" />
+    <detailed-card-component :has-ads="false" :card-props="movies" :height="19" class="mb-12" />
   </page-layout>
 </template>
 

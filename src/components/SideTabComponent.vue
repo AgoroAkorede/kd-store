@@ -83,24 +83,24 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul class="flex flex-col h-100vw bg-[#545454] z-20 w-[10vw] p-5 space-y-5">
+  <ul class="flex flex-col h-auto bg-[#545454] z-20 min-w-[5vw] lg:p-5 sm:p-1 space-y-5">
     <!-- <RouterLink to="/">Home</RouterLink>  -->
-    <li class="list-none fixed top-10">
+    <li class="list-none fixed top-[5rem]">
       <icon-wrapper iconName="Home" :iconText="isHomeText"
         ><home-icon :isActive="isHome"
       /></icon-wrapper>
     </li>
-    <li class="list-none fixed top-[5rem]">
+    <li class="list-none fixed top-[8rem]">
       <icon-wrapper iconName="Apps" :iconText="isAppText"
         ><app-icon :isActive="isApps"
       /></icon-wrapper>
     </li>
-    <li class="list-none fixed top-[10rem]">
+    <li class="list-none fixed top-[14rem]">
       <icon-wrapper iconName="Gaming" :iconText="isGamingText"
         ><gaming-icon :isActive="isGaming"
       /></icon-wrapper>
     </li>
-    <li class="list-none fixed top-[15rem]">
+    <li class="list-none fixed top-[19rem]">
       <icon-wrapper iconName="Movies" :iconText="isMoviesText"
         ><movie-icon :isActive="isMovies"
       /></icon-wrapper>
